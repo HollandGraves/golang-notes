@@ -424,6 +424,92 @@ using a test.go file
 	// 		everyone of those things
 
 
+
+GO NOTE:
+how to define a struct
+
+	// first and foremost you define
+	// to define a struct you use similar syntax to defining a type
+	//
+	// e.g.
+	// type nameHere struct
+	//
+	// this is how you define a struct without any properties.
+	// If you would like to define a struct with properties to have values added to it, you would define the name of the property and it's type
+	//
+	// e.g.
+	// package main
+	//
+	// type nameHere struct {
+	// 		firstProperty string
+	// 		secondProperty string
+	// }
+	//
+	// func main() {}
+
+
+
+GO NOTE:
+three ways to add value to a struct
+
+	// 1st way.
+	// Least effecient, due to the fact the values being assigned depend on the physical order they are typed in.
+	// In the case the values are e.g. returned in a different order they'll be assigned incorrectly ultimately
+	//
+	// e.g.
+	// package main
+	//
+	// type person struct {
+	// 		firstName string
+	// 		secondName string
+	// }
+	//
+	// func main() {
+	// 		alex := person{"Alex", "Anderson"}
+	// 		fmt.Println(alex)		// prints {Alex Aenderson}
+	// }
+	//
+	//
+	//
+	// 2nd way
+	// Much more effecient, due to the ability to assign the values to the specific properties you'd like the values to go to
+	//
+	// e.g.
+	// package main
+	//
+	// type person struct {
+	// 		firstName string
+	// 		secondName string
+	// }
+	//
+	// func main() {
+	// 		alex := person{
+	// 			firstName: "Alex",
+	// 			secondName: "Anderson"}
+	// 		fmt.Println(alex)		// prints {Alex Aenderson}
+	// }
+	//
+	//
+	//
+	// 3rd way
+	// Initializes an instance of the struct without adding any values to the properties of the instance of the struct
+	// A thing to remember is that if this method is used then zero values will be assigned to all the properties of the struct by default
+	//
+	// e.g.
+	// package main
+	//
+	// type person struct {
+	// 		firstName string
+	// 		secondName string
+	// }
+	//
+	// func main() {
+	// 		var alex person
+	// 		fmt.Println(alex)		// prints {  }
+	// }
+
+
+
 */
 
 func main() {}
