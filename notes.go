@@ -510,6 +510,48 @@ three ways to add value to a struct
 
 
 
+GO NOTE:
+printing all the values and property names with fmt.Printf()
+
+	// to print all the values AND the property's names associated with that value of an instance of a struct
+	// 		you must use the fmt.Printf() function versus the fmt.Println() function
+	// the reason we do this is because the fmt.Printf() function can use special characters, within a string, to harness certain effects.
+	//
+	// e,g,
+	// (using the above person struct and properties within it)
+	// fmt.Printf("%+v", alex)
+	//
+	// the "%+v" string will cause all the "v"alues to be printed alongside the properties of the alex variable. In this case, because alex has no values assigned to its properties
+	// 		fmt.Printf("%+v", alex) will print {firstName: lastName:} and then if there were values stored in firstName and lastName the values would be printed alongside within the
+	// 		curly braces
+
+
+
+GO NOTE:
+updating struct properties
+
+	// to update a struct property, you use dot notation just like in jS
+	//
+	// e.g.
+	// package main
+	//
+	// type person struct {
+	// 		firstName string
+	// 		secondName string
+	// }
+	//
+	// func main() {
+	// 		var alex person
+	//
+	// 		alex.firstName = "Alex"
+	// 		alex.lastName = "Anderson"
+	//
+	// 		fmt.Println(alex)		// prints {  }
+	// 		fmt.Printf("%+v", alex) 			// prints {firstName:Alex lastName:Anderson}
+	// }
+
+
+
 */
 
 func main() {}
