@@ -552,6 +552,66 @@ updating struct properties
 
 
 
+GO NOTE:
+the two ways to embed a struct within a struct
+
+	// 1st.
+	// this method will give the embedded struct a custom property name
+	//
+	// e.g.
+	// type contactInfo struct {
+	// 		email string
+	// 		zipcode int
+	// }
+	//
+	// type person struct {
+	// 		name string
+	// 		contact contactInfo				// the propterties of the contactInfo struct are accessed through the property name contact
+	// }
+	//
+	//
+	//
+	// 2nd.
+	// this method will give the embedded struct the same name as the embedded struct
+	//
+	// e.g.
+	// type contactInfo struct {
+	// 		email string
+	// 		zipcode int
+	// }
+	//
+	// type person struct {
+	// 		name string
+	// 		contactInfo				// the propterties of the contactInfo struct are accessed through the property name contactInfo
+	// }
+
+
+
+GO NOTE:
+how to assign values to embedded structs
+
+	// (using the above structs)
+	// bob := person{
+	// 		name: "Bob Smith",
+	// 		contactInfo: contactInfo{
+	//			email: "cdxx00042@gmail.com",
+	// 			zipcode: 70501,
+	// 		},										// note how there are commas after every value, even after the embedded struct's closing curly braces end.
+	// }
+	//
+	// fmt.Printf("%+v", bob)			// {name: Bob Smith contactInfo:{email: "cdxx00042@gmail.com" zipcode:70501}}
+	//
+	// one of the biggest note from this GO NOTE is that you need to add a comma after every value, even after the embedded struct's closing curly braces
+
+
+
+GO NOTE:
+making functions that are type of struct, and with receivers
+
+	//
+
+
+
 */
 
 func main() {}
