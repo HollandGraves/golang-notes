@@ -608,7 +608,98 @@ how to assign values to embedded structs
 GO NOTE:
 making functions that are type of struct, and with receivers
 
+	// quick note reminder: always make your functions beneath the func main(), if making a function within the main.go file; & always make your structs above the func main()
+	// 		everything is set up normally as a receiver function should, just using the name of the struct for the receiver type
 	//
+	// e.g..
+	// type contactInfo struct {
+	// 		email string
+	// 		zipcode int
+	// }
+	//
+	// type person struct {
+	// 		name string
+	// 		contactInfo
+	// }
+	//
+	// func main() {}
+	//
+	// func (p person) print() {
+	// 		fmt.Printf("%+v", p)
+	// }
+
+
+
+GO NOTE:
+everything about Go pointers
+
+	// 1st. first and foremost are two new operators to learn with pointers: & and *
+	//
+	// 2nd. second and utmost, the reason we use these two new symbols is because whenever you call an already initiallized variable the new call
+	// 		of the variable is stored in a new location within memory, so in essence a copy of the exact information is made and restored
+	// 		elsewhere in RAM, reiterating. This is INCREDIBLY relevant because let's say that you changed the value of the very first instance
+	// 		of the variable (where it was initialized in RAM) with a receiver function. What will happen at that change is that receiver variable
+	// 		will be stored with the new inforation at a new location in MEMORY, and when you call on the variable the receiver function acted upon
+	// 		then the original value stored within that variable will be returned; NOT the changed result of the function, for that is stored else-
+	// 		where in RAM at a totally different location
+	//
+	// & is a symbol, that when placed in from of a variable with information stored in it, that will save the MEMORY ADDRESS of the variable
+	// * is a symbol, that is used in conjunction with a value that is a MEMORY ADDRESS LOCATIONS, that will return the information at that memory address.
+	// 		This is called a pointer
+	//
+	// the * symbol can be used with receiver functions; specifically they can be used with the data type of the receiver variable in a function declaration;
+	// 		so as to be aware of the function being used on MEMORY ADDRESSES (i.e. pointers); as well as on the variable that is used to describe the receiver,
+	// 		and is used within the function declaration to represent the data that will be received
+	//
+	// e.g.
+	// func (pointerToPerson *person) print() {
+	// 		fmt.Printf("%+v", (*pointerToPerson))
+	// }
+	//
+	// In this case above, even though the receiver function can only be used through dot notation on a variable that has a memory address stored in it,
+	// 		the receiver function will also work on a data type of person
+	// 		(i.e. a variable with a NON-MEMORY ADDRESS stored within it)
+	//
+	// 		Golang is able to differentiate between the two on the fly, as long as the special syntax is used below within the receiver function's declaration
+	//
+	// e.g.
+	// type contactInfo struct {
+	// 		email string
+	// 		zipcode int
+	// }
+	//
+	// type person struct {
+	// 		name string
+	// 		contactInfo
+	// }
+	//
+	// func main() {
+	// 		bob := person{
+	// 			name: "Bobby Boy",
+	// 			contactInfo: contactInfo{
+	// 				email: "cdxx00042@gmail.com",
+	// 				zipcode: 80501,
+	// 			},
+	// 		}
+	//
+	// 		bob.print()									// this function will still work on the bob variable because of the * symbol in the receiver function of print() and the special syntax used within it's receiver variable
+	//
+	// }
+	//
+	// func (pointerToPerson *person) print() {
+	// 		fmt.Printf("%+v", (*pointerToPerson))
+	// }
+	//
+	//
+	//
+	// A much longer way to achieve the same effect would be to save the MEMORY ADDRESS of the bob variable in a new variable and then run the function on the new variable
+	// 		with the MEMORY ADDRESS stored in it like below
+	//
+	// e.g.
+	// bobPointer := &bob
+	// bobPointer.print()
+	//
+	// this would still work although it is unecessary
 
 
 
