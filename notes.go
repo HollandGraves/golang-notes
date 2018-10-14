@@ -686,7 +686,7 @@ everything about Go pointers
 	//
 	// }
 	//
-	// func (pointerToPerson *person) print() {
+	// func (pointerToPerson *person) print() {				// it is worth mentioning that *person is looking for a TYPE that is a, specifically, type pointer to person
 	// 		fmt.Printf("%+v", (*pointerToPerson))
 	// }
 	//
@@ -704,7 +704,31 @@ everything about Go pointers
 
 
 GO NOTE:
+reference vs value types
 
+	// a data type can be either based upon references (i.e. ) or values (i.e.)
+	// a data type that uses references is an advanced data type that inherently contains a pointer as well as a simple data type
+	//
+	// 		e.g.
+	// 		a slice contains: an array, a pointer to that array, the array's length, and the array's capacity so that when the slice is updated it auto updates the array at it's
+	// 			original memory address within it using the pointer, it also will create a copy of the pointer, capacity of slice, and length of the slice. This copy is due to
+	// 			Golang being a "pass by value" type of language; meaning that everytime a data type is used, some part of it (if not the entire thing) is copied to a new location
+	// 			in memory (hence the need for pointers as a whole)
+	//
+	// 		this is how a data type that is a reference works
+	//
+	// a data type that writes only its value to a memory address is a simple data type
+	//
+	// 		e.g.
+	// 		an int, string, float64, etc
+	//
+	// A LIST OF ALL THE TYPES OF DATA TYPES GOES AS FOLLOWS:
+	// 		REFERENCE							VALUE
+	// 		slices								int
+	// 		maps								float
+	// 		channels							string
+	// 		pointers							bool
+	// 		functions							structs
 
 
 
