@@ -703,6 +703,11 @@ everything about Go pointers
 
 
 
+GO NOTE:
+
+
+
+
 */
 
 func main() {}
