@@ -138,6 +138,13 @@ Creating a receiver function
 	// 		(d deck)
 	// 		this will allow the function to be used through dot notation on any variable that contains the use of the data type slice (which remember is
 	// 		a slice data type that contains strings at heart with a new name due to the type deck []string syntax)
+	//
+	// 		IT IS WORTH NOTING THAT IF YOU DO NOT USE THE RECEIVER VARIABLE, YOU DO NOT NEED TO DECLARE IT. THIS IS APPLICABLE IN A CASE WHERE YOU ONLY
+	// 			RETURN A VALUE
+	//
+	// 		e.g.
+	//
+	//
 	// third we will write the name of the function we want to be able to use through dot notation
 
 
@@ -729,6 +736,57 @@ reference vs value types
 	// 		channels							string
 	// 		pointers							bool
 	// 		functions							structs
+
+
+
+GO NOTE:
+declaring interfaces
+
+	// you declare an interface similarly to how you declare a struct
+	//
+	// e.g.
+	// type someKindOfInterface interface {
+	// 		someFuncion1() string
+	// 		someFuncion2() string
+	// }
+	//
+	// type someStruct1 struct{}
+	// type someStruct2 struct{}
+	//
+	// func main() {
+	// 		sT1 := someStruct1{}
+	// 		sT2 := someStruct2{}
+	//
+	// 		printGreeting(sT1)
+	// 		printGreeting(sT2)
+	//
+	// }
+	//
+	//
+	// func printGreeting(sk someKingOfInterface) {
+	// 		fmt.Println(sk.someFunction1())
+	// }
+	//
+	//
+	// func (someStruct1) someFunction1() string {
+	// 		return "Hi there!"
+	// }
+	// func (someStruct2) someFunction1() string {
+	// 		return "Hola"
+	// }
+	//
+	//
+	// func (someStruct1) someFunction2() string {
+	// 		return "CRAZY CONSOLE LOGZZZZZZZZZZ"
+	// }
+	// func (someStruct2) someFunction2() string {
+	// 		return "CRAZY CONSOLE LOGSSSSSSSSSS"
+	// }
+	//
+	//
+	// what has happened now is that any type that also uses both a someFunction1() and a someFunction2() function (that both also returns strings) also becomes type someKindOfInterface
+	// 		and can use any functions defined with the type someKindOfInterface.
+	// 			The utility of this is that you can define one function with an interface and have it utilized by many different custom data types
 
 
 
