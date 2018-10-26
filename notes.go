@@ -757,8 +757,8 @@ declaring interfaces
 	// 		sT1 := someStruct1{}
 	// 		sT2 := someStruct2{}
 	//
-	// 		printGreeting(sT1)
-	// 		printGreeting(sT2)
+	// 		printGreeting(sT1)			// will print out "Hi there!"
+	// 		printGreeting(sT2)			// will print out "Hola!"
 	//
 	// }
 	//
@@ -787,6 +787,61 @@ declaring interfaces
 	// what has happened now is that any type that also uses both a someFunction1() and a someFunction2() function (that both also returns strings) also becomes type someKindOfInterface
 	// 		and can use any functions defined with the type someKindOfInterface.
 	// 			The utility of this is that you can define one function with an interface and have it utilized by many different custom data types
+	//
+	// It is also worth noting that if the functions in your interface have certain argument types defined, as well as return types, then all the qualifications of the function must be
+	// 		met to be considered a type of the interface
+
+
+
+GO NOTE:
+difference between concrete types and interface types
+
+	// 1. a concrete type is a: usermade type, map, struct, int, string, etc (i.e. built in language types and custom types)
+	// 		this means that you can create a value DIRECTLY with these types
+	//
+	// 2. an interface type is an: interface
+	// 		you cannot create a value with an interface type.
+	// 		you use interface types to INDIRECTLY create a value to a type
+
+
+
+GO NOTE:
+facts about interfaces
+
+	// 1. Interfaces are NOT GENERIC TYPES
+	// 2. Interfaces are "implicit"
+	// 3. Interfaces are a contract to help us manage types
+	// 4. The first step in dealing with interfaces is learning how to read them
+	//
+	// 1. EXPLAINED: a generic type is another word for a class that can extend it's properties to another class or variable. Interfaces are un-extendable
+	// 2. EXPLAINED: Interfaces are implicit in that you make to written declaration to say that two structs also gain an interface type. These processes
+	// 					happen behind the scenes by satisfying the interfaces requirements
+	// 3. EXPLAINED: an Interfaces point is to make handeling the information within a file more streamline by helping you reuse code
+	// 4. EXPLAINED: first learn to read the interfaces in a standard library, before learning to write your own.
+
+
+
+GO NOTE:
+embedding interfaces
+
+	// you can embed interfaces within interfaces as the terms required by the outermost interface to use the outermost interface
+	//
+	// e.g.
+	// type ReadCloser interface {
+	// 		Reader
+	// 		Closer
+	// }
+	//
+	// type Reader interface {
+	// 		Read(p []byte) (n int, err error)
+	// }
+	//
+	// type Closer interface {
+	// 		Close() error
+	// }
+	//
+	// so now anything is a ReadCloser type if it satisfies the Reader interface and the Closer interface
+	// so if anything is a ReadCloser type it is also a Reader type and a Closer type, so the ReadCloser type could also use Reader functions and Closer functions
 
 
 
