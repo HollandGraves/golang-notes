@@ -870,6 +870,18 @@ the make function
 
 
 
+GO NOTE:
+
+	// if you aren't passing in an error but are returning one, you must initialize the error and then, generally, instant error check
+	//
+	// e.g.
+	// if err := template.ParseFiles(...); err != nil {
+	// 		fmt.Println("Error: ", err)
+	// 		os.Exit(1)
+	// }
+
+
+
 */
 
 func main() {}
