@@ -25,7 +25,8 @@ GO NOTE:
 GO NOTE:
 intializing variables
 
-	// you can initialize a variable outside of the func main() {} function, although you cannot assign a value to it
+	// you can initialize a variable outside of the func main() {} function, although you cannot assign a value to it.
+	// 		This will give the variable PACKAGE LEVEL SCOPE
 	// you can also initialize a variable, e.g. var card int
 	//		without immediately assigning a variable to it; or later assigning a variable to it.
 
